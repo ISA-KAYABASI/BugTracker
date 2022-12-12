@@ -1,14 +1,14 @@
 package com.bugtracker.bugtracker.repository;
 
-import com.bugtracker.bugtracker.model.Department;
+import com.bugtracker.bugtracker.model.Label;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department,Long> {
+public interface LabelRepository extends JpaRepository<Label,Long> {
 
-    boolean existsByDepartmentName(String departmentName);
+    boolean existsByLabelName(String labelName);
 
-    Department findByDepartmentName(String departmentName);
+    Label findByLabelName(String labelName);
 }

@@ -32,33 +32,34 @@
 
     <hr>
     <h2>Create Bug Form</h2>
-    <form action="#" th:action="@{/saveEmployee}" th:object ="${bug}" method="POST">
+    <form action="#" th:action="@{/saveBug}" th:object ="${bug}" method="POST">
 
         <p>Title
-            <input type="text" th:field ="*{title}" placeholder="Enter a title" class="form-control mb-4 col-4">
+            <input type="text" th:field ="*{title}"  placeholder="Enter a title" class="form-control mb-4 col-4">
         <span th:if="${#fields.hasErrors('title')}" th:errorclass="error" th:errors="*{title}"></span>
         </p>
 
-        <p>Last Name
-            <input type="text" th:field ="*{description}" placeholder="Bug Description" class="form-control mb-4 col-4">
+        <p>Description
+            <br>
+            <textarea maxlength="300" minlength="2" type="text"th:field ="*{description}" th:name="description" th:rows="5" cols="70" style="margin: 1px" placeholder="Bug Description" required="required"></textarea>
             <span th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
         </p>
 
         <p>Salary
-            <input type="number" min="0" max="999999999999999" inputmode="decimal" th:field ="*{salary}" placeholder="Employee Salary" class="form-control mb-4 col-4">
+            <input type="text" th:field ="*{salary}" placeholder="Employee Salary" class="form-control mb-4 col-4">
             <span th:if="${#fields.hasErrors('salary')}" th:errorclass="error" th:errors="*{salary}"></span>
         </p>
 
-        <p>Birthdate
-            <input type="date" min="1900-01-01"  th:field ="*{birthday}" placeholder="Employee birthday" class="form-control mb-4 col-4">
-            <span th:if="${#fields.hasErrors('birthday')}" th:errorclass="error" th:errors="*{birthday}"></span>
+        <p>Deadline
+            <input type="date" min="1900-01-01"  th:field ="*{deadLine}" placeholder="Bug deadLine" class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('deadLine')}" th:errorclass="error" th:errors="*{deadLine}"></span>
 
         </p>
 
         <p>
-            Department
+            Labels / Tags
             <br>
-            <select  name="departmentName">
+            <select  name="labelName">
                 <option th:size="large" th:each="labelName : ${listLabel2}"
                         th:text="${labelName.labelName}"
                       />
@@ -68,7 +69,7 @@
 
         <button type="submit" class="btn btn-outline-info col-2"> Save</button>
         <button type="reset" class="btn btn-outline-warning col-2"> Reset</button>
-        <a th:href = "@{/EmployeeList}" class="btn btn-outline-danger col-2">Return</a>
+        <a th:href = "@{/BugList}" class="btn btn-outline-danger col-2">Return</a>
 
     </form>
 

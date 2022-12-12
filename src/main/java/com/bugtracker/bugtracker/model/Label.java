@@ -13,14 +13,14 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @Data
 @Table(name="department")
-public class Department {
+public class Label {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Department cannot be empty")
-    @Column(name ="departmentName" )
-    private String departmentName;
+    @NotEmpty(message = "Label cannot be empty")
+    @Column(name ="labelName" )
+    private String labelName;
 
 
 

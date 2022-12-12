@@ -25,12 +25,7 @@
 
     <h1>Bug List</h1>
     <br>
-    <form th:action="@{/searchEmployee}" method="get">
-        <input id="txtSearch" type="text" name="keyword">
-        <button type="submit" class="btn btn-outline-info col-2">Search</button>
-    </form>
-    <br>
-    <a class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/shownewEmployeeForm}">Add Bug</a>
+    <a class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/shownewBugForm}">Add Bug</a>
 
     <a th:href = "@{/LabelList}" class="btn btn-primary btn-lg mb-3">Label / Tag List</a>
     <table border="1" class = "table table-striped table-responsive-md">
@@ -42,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="bug:${listEmployees}">
+            <tr th:each="bug:${listBugs}">
 
                 <td ><a th:href="@{/showFormForDetails/{id}(id=${bug.id})}"  th:text="${bug.title}">Details</a></td>
                 <td th:text="${bug.labelName}"></td>

@@ -1,6 +1,6 @@
-package com.hornsandspurs.hornsandspursmanagementsystem.controller;
+package com.bugtracker.bugtracker.controller;
 
-import com.hornsandspurs.hornsandspursmanagementsystem.service.EmployeeService;
+import com.bugtracker.bugtracker.service.BugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private BugService bugService;
 
     @GetMapping("/login")
     public String login(){
@@ -20,8 +20,8 @@ public class MainController {
 
     @GetMapping("/")
     public String viewHomePage(Model model){
-        model.addAttribute("listEmployees", employeeService.getAllEmployees());
-        return "indexEmployee";
+        model.addAttribute("listBugs", bugService.getAllBug());
+        return "indexBug";
     }
 
 }

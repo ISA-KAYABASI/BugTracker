@@ -1,4 +1,4 @@
-package com.hornsandspurs.hornsandspursmanagementsystem.model;
+package com.bugtracker.bugtracker.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

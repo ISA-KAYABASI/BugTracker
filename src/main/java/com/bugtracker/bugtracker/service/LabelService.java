@@ -1,19 +1,18 @@
 package com.bugtracker.bugtracker.service;
 
-import com.bugtracker.bugtracker.model.Department;
-import com.bugtracker.bugtracker.model.Employee;
+import com.bugtracker.bugtracker.model.Label;
 
 import java.util.List;
 
 
-public interface DepartmentService{
-    List<Department> getAllDepartment();
-    Department saveDepartment(Department department);
+public interface LabelService {
+    List<Label> getAllLabel();
+    Label saveLabel(Label label);
 
-    Department updateDepartment(Department department);
-    Department getDepartmentById(long id);
+    Label updateLabel(Label label);
+    Label getLabelById(long id);
 
 
 
-    void deleteDepartmentById(long id);
+    void deleteLabelById(long id);
 }

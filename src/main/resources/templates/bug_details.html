@@ -14,46 +14,44 @@
 <!-- Importing Navbar	-->
 <div th:insert="navbar.html :: navbar"></div>
 
-<!--<div class="container">-->
-<div class="card" style="width: 18rem;">
+<div class="container">
 
-  <div class="card-body">
     <hr>
     <h2>Bug Details</h2>
     <table border="1" class = "table table-striped table-responsive-md">
       <thead>
       <tr>
         <th>Title</th>
-        <th>Last Name</th>
+        <th>Description</th>
         <th>Salary</th>
-        <th>Birthday</th>
-        <th>Department</th>
+        <th>Deadline</th>
+        <th>Label / Tag</th>
         <th>Status</th>
 
         <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="employeeDetails:${employeeDetails}">
+      <tr th:each="bugDetails:${bugDetails}">
 
-        <td th:text="${employeeDetails.title}"></td>
-        <td th:text="${employeeDetails.description}"></td>
-        <td th:text="${employeeDetails.salary}"></td>
-        <td th:text="${#dates.format(employeeDetails.birthday,'dd/MM/yyyy')}"></td>
-        <td th:text="${employeeDetails.labelName}"></td>
+        <td th:text="${bugDetails.title}"></td>
+        <td th:text="${bugDetails.description}"></td>
+        <td th:text="${bugDetails.salary}"></td>
+        <td th:text="${#dates.format(bugDetails.deadLine,'dd/MM/yyyy')}"></td>
+        <td th:text="${bugDetails.labelName}"></td>
 
 
 
 
         <td >
-          <form th:action="@{/showFormForDetails/{id}(id=${employeeDetails.id})}" th:object = "${employeeDetails}" method="POST">
+          <form th:action="@{/showFormForDetails/{id}(id=${bugDetails.id})}" th:object = "${bugDetails}" method="POST">
             <div class="form-group">
               <div class="form-check form-switch" >
-                <label th:switch="${employeeDetails.isActive()}">
-                  <p th:case="true">Employee  is  active</p>
-                  <p th:case="false">Employee is passive</p>
+                <label th:switch="${bugDetails.isActive()}">
+                  <p th:case="true">Bug  is  active</p>
+                  <p th:case="false">Bug is passive</p>
                 </label>
-                <input sec:authorize="hasRole('ROLE_ADMIN')" type="checkbox"  class="form-check-input" role="switch" id="isActive" th:name="isActive"  th:checked="${employeeDetails.isActive()}" onChange="this.form.submit()" />
+                <input sec:authorize="hasRole('ROLE_ADMIN')" type="checkbox"  class="form-check-input" role="switch" id="isActive" th:name="isActive"  th:checked="${bugDetails.isActive()}" onChange="this.form.submit()" />
               </div>
             </div>
           </form>
@@ -61,13 +59,13 @@
 
 
         <td sec:authorize="hasRole('ROLE_ADMIN')">
-          <form th:action="@{/showFormForDetails/{id}(id=${employeeDetails.id})}" th:object = "${employeeDetails}" method="POST">
+          <form th:action="@{/showFormForDetails/{id}(id=${bugDetails.id})}" th:object = "${bugDetails}" method="POST">
             <div class="form-group">
               <div class="form-check form-switch" >
-                <label th:switch="${employeeDetails.isActive()}">
+                <label th:switch="${bugDetails.isActive()}">
                   <p th:case="true">
-                    <a th:href="@{/showFormForUpdate/{id}(id=${employeeDetails.id})}" class="btn btn-primary">Update</a>
-                    <a th:href="@{/deleteEmployee/{id}(id=${employeeDetails.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/showFormForUpdate/{id}(id=${bugDetails.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/deleteBug/{id}(id=${bugDetails.id})}" class="btn btn-danger">Delete</a>
                   </p>
                   <p th:case="false">Cannot modify !</p>
                 </label>
@@ -80,7 +78,7 @@
       </tbody>
     </table>
     <a th:href="@{/}" class="btn btn-danger">Return</a>
-  </div>
+
 </div>
 
 <!--<div class="container">-->

@@ -1,7 +1,7 @@
-package com.hornsandspurs.hornsandspursmanagementsystem.repository;
+package com.bugtracker.bugtracker.repository;
 
 
-import com.hornsandspurs.hornsandspursmanagementsystem.model.Actor;
+import com.bugtracker.bugtracker.model.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActorRepository extends JpaRepository<Actor,Long> {

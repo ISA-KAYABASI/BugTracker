@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class EmployeeController {
+public class BugController {
 
     @Autowired
     private BugService bugService;
@@ -28,22 +28,12 @@ public class EmployeeController {
 
 
     //display list of employees
-    @GetMapping("/EmployeeList")
+    @GetMapping("/BugList")
     public String viewHomePage(Model model){
-        model.addAttribute("listEmployees", bugService.getAllBug());
-        return "indexEmployee";
+        model.addAttribute("listBugs", bugService.getAllBug());
+        return "indexBug";
     }
 
-    //display list of employees
-    @GetMapping("/searchEmployee")
-    public String getEmployee(Model model, String keyword){
-        if (keyword != null){
-            model.addAttribute("listEmployees", bugService.findByKeyWord(keyword));
-        }else {
-            model.addAttribute("listEmployees", bugService.getAllBug());
-        }
-        return "indexEmployee";
-    }
 
 
     @GetMapping("/showFormForDetails/{id}")
@@ -54,47 +44,47 @@ public class EmployeeController {
 
 
         //set bug as a model attribute to pre-populate the form
-        model.addAttribute("employeeDetails", bug);
-        return "employee_details";
+        model.addAttribute("bugDetails", bug);
+        return "bug_details";
     }
 
 
     @PostMapping("/showFormForDetails/{id}")
-    public String updateEmployeeStatus(@Valid @PathVariable (value = "id") long id, Model model){
+    public String updateBugStatus(@Valid @PathVariable (value = "id") long id, Model model){
 
         //get bug from the service
         Bug bug = bugService.getBugById(id);
         bug.setActive(!bug.isActive());
         bugService.saveBug(bug);
-        model.addAttribute("employeeDetails", bug);
-        return "employee_details";
+        model.addAttribute("bugDetails", bug);
+        return "bug_details";
     }
 
 
-    @GetMapping("/shownewEmployeeForm")
-    public String shownewEmployeeForm(Model model){
+    @GetMapping("/shownewBugForm")
+    public String shownewBugForm(Model model){
         //create model attribute to bind form data
         Bug bug = new Bug();
-        List<Label> listDepartments2 = labelService.getAllLabel();
-        model.addAttribute("listLabel2", listDepartments2);
-        model.addAttribute("employee", bug);
-        return "new_employee";
+        List<Label> listLabel2 = labelService.getAllLabel();
+        model.addAttribute("listLabel2", listLabel2);
+        model.addAttribute("bug", bug);
+        return "new_bug";
     }
 
 
-    @PostMapping("/saveEmployee")
-    public String saveEmployee(@Valid @ModelAttribute("employee") Bug bug, BindingResult bindingResult, Model model){
+    @PostMapping("/saveBug")
+    public String saveBug(@Valid @ModelAttribute("bug") Bug bug, BindingResult bindingResult, Model model){
 
-        List<Label> listDepartments2 = labelService.getAllLabel();
-        model.addAttribute("listLabel2", listDepartments2);
+        List<Label> listLAbel2 = labelService.getAllLabel();
+        model.addAttribute("listLabel2", listLAbel2);
 
         if (bindingResult.hasErrors()){
 
-            return "new_employee";
+            return "new_bug";
         }
         //save bug to database
         bugService.saveBug(bug);
-        return "redirect:/shownewEmployeeForm?successadd";
+        return "redirect:/shownewBugForm?successadd";
     }
 
 
@@ -107,33 +97,33 @@ public class EmployeeController {
         bug.setActive(!bug.isActive());
 
         //set bug as a model attribute to pre-populate the form
-        model.addAttribute("employee", bug);
+        model.addAttribute("bug", bug);
         List<Label> listLabel2 = labelService.getAllLabel();
         model.addAttribute("listLabel2", listLabel2);
-        return "update_employee";
+        return "update_bug";
     }
 
 
-    @PostMapping("/updateEmployee")
-    public String updateEmployee(@Valid  @ModelAttribute("employee") Bug bug, BindingResult bindingResult, Model model){
-        List<Label> listDepartments2 = labelService.getAllLabel();
-        model.addAttribute("listLabel2", listDepartments2);
+    @PostMapping("/updateBug")
+    public String updateBug(@Valid  @ModelAttribute("bug") Bug bug, BindingResult bindingResult, Model model){
+        List<Label> listLabel2 = labelService.getAllLabel();
+        model.addAttribute("listLabel2", listLabel2);
 
         if (bindingResult.hasErrors()){
 
-            return "update_employee";
+            return "update_bug";
         }
         bugService.updateBug(bug);
-        return "update_employee";
+        return "update_bug";
 
     }
 
-    @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable (value = "id") long id){
+    @GetMapping("/deleteBug/{id}")
+    public String deleteBug(@PathVariable (value = "id") long id){
 
         // call delete employee
 
         this.bugService.deleteBugById(id);
-        return "redirect:/EmployeeList";
+        return "redirect:/BugList";
     }
 }

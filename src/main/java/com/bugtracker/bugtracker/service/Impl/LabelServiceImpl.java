@@ -2,12 +2,10 @@ package com.bugtracker.bugtracker.service.Impl;
 
 
 
-import com.bugtracker.bugtracker.service.DepartmentService;
-import com.bugtracker.bugtracker.model.Department;
-import com.bugtracker.bugtracker.model.Employee;
-import com.bugtracker.bugtracker.repository.DepartmentRepository;
-import com.bugtracker.bugtracker.repository.EmployeeRepository;
-import com.bugtracker.bugtracker.service.DepartmentService;
+import com.bugtracker.bugtracker.model.Label;
+import com.bugtracker.bugtracker.repository.LabelRepository;
+import com.bugtracker.bugtracker.service.LabelService;
+import com.bugtracker.bugtracker.repository.BugRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,61 +13,61 @@ import java.util.Optional;
 
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService {
+public class LabelServiceImpl implements LabelService {
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private LabelRepository labelRepository;
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private BugRepository bugRepository;
 
 
     @Override
-    public List<Department> getAllDepartment() {
-        return departmentRepository.findAll();
+    public List<Label> getAllLabel() {
+        return labelRepository.findAll();
     }
 
     @Override
-    public Department saveDepartment(Department department) throws ArithmeticException  {
+    public Label saveLabel(Label label) throws ArithmeticException  {
 
 
 
-        if (departmentRepository.existsByDepartmentName(department.getDepartmentName())){
-            throw new ArithmeticException("Same department already exists: " + department.getDepartmentName());
+        if (labelRepository.existsByLabelName(label.getLabelName())){
+            throw new ArithmeticException("Same label already exists: " + label.getLabelName());
         }else
         {
-        // Department name turn first letter uppercase
-            int departmentNameLength = department.getDepartmentName().length();
-            department.setDepartmentName(department.getDepartmentName().substring(0,1).toUpperCase()+(department.getDepartmentName().substring(1,departmentNameLength).toLowerCase()));
-        return departmentRepository.save(department);
+        // Label name turn first letter uppercase
+            int departmentNameLength = label.getLabelName().length();
+            label.setLabelName(label.getLabelName().substring(0,1).toUpperCase()+(label.getLabelName().substring(1,departmentNameLength).toLowerCase()));
+        return labelRepository.save(label);
         }
     }
 
 
 
     @Override
-    public Department updateDepartment(Department department) {
-        if (departmentRepository.existsByDepartmentName(department.getDepartmentName())){
-            throw new ArithmeticException("Same department already exists: " + department.getDepartmentName());
+    public Label updateLabel(Label label) {
+        if (labelRepository.existsByLabelName(label.getLabelName())){
+            throw new ArithmeticException("Same label already exists: " + label.getLabelName());
         }else
         {
-            return departmentRepository.save(department);
+            return labelRepository.save(label);
         }
     }
 
     @Override
-    public Department getDepartmentById(long id) {
-        Optional<Department> optional = departmentRepository.findById(id);
-        Department department= null;
+    public Label getLabelById(long id) {
+        Optional<Label> optional = labelRepository.findById(id);
+        Label label = null;
         if(optional.isPresent()){
-            department = optional.get();
+            label = optional.get();
         }else {
-            throw new RuntimeException("Department not found for id :: " + id);
+            throw new RuntimeException("Label not found for id :: " + id);
         }
-        return department;
+        return label;
     }
     @Override
-    public void deleteDepartmentById(long id) {
-        this.departmentRepository.deleteById(id);
+    public void deleteLabelById(long id) {
+        this.labelRepository.deleteById(id);
     }
 
 

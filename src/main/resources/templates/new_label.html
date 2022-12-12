@@ -41,7 +41,7 @@
 
 
         <p>
-            <input type="text" th:field ="*{labelName}" placeholder="Department Name" class="form-control mb-4 col-4">
+            <input type="text" th:field ="*{labelName}" placeholder="Label Name" class="form-control mb-4 col-4">
             <span th:if="${#fields.hasErrors('labelName')}" th:errorclass="error" th:errors="*{labelName}"></span>
         </p>
 
