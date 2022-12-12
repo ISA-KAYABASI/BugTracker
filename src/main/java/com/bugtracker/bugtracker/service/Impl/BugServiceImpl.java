@@ -2,6 +2,7 @@ package com.bugtracker.bugtracker.service.Impl;
 
 import com.bugtracker.bugtracker.model.Actor;
 import com.bugtracker.bugtracker.model.Bug;
+import com.bugtracker.bugtracker.model.Label;
 import com.bugtracker.bugtracker.model.Role;
 import com.bugtracker.bugtracker.repository.ActorRepository;
 import com.bugtracker.bugtracker.repository.LabelRepository;
@@ -88,6 +89,15 @@ public class BugServiceImpl implements BugService {
     public void deleteBugById(long id) {
         this.bugRepository.deleteById(id);
     }
+
+    @Override
+    public Label getLabel(Label label) {
+
+        labelRepository.findByLabelName(label.getLabelName());
+        return label;
+    }
+
+
 
 
     @Override

@@ -29,15 +29,14 @@ public class LabelServiceImpl implements LabelService {
     @Override
     public Label saveLabel(Label label) throws ArithmeticException  {
 
-
+        // Label name turn first letter uppercase
+        int departmentNameLength = label.getLabelName().length();
+        label.setLabelName(label.getLabelName().substring(0,1).toUpperCase()+(label.getLabelName().substring(1,departmentNameLength).toLowerCase()));
 
         if (labelRepository.existsByLabelName(label.getLabelName())){
             throw new ArithmeticException("Same label already exists: " + label.getLabelName());
         }else
         {
-        // Label name turn first letter uppercase
-            int departmentNameLength = label.getLabelName().length();
-            label.setLabelName(label.getLabelName().substring(0,1).toUpperCase()+(label.getLabelName().substring(1,departmentNameLength).toLowerCase()));
         return labelRepository.save(label);
         }
     }

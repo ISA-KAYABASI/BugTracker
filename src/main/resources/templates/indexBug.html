@@ -27,12 +27,12 @@
     <br>
     <a class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/shownewBugForm}">Add Bug</a>
 
-    <a th:href = "@{/LabelList}" class="btn btn-primary btn-lg mb-3">Label / Tag List</a>
+    <a th:href = "@{/LabelList}" class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')">Label / Tag List</a>
     <table border="1" class = "table table-striped table-responsive-md">
         <thead>
             <tr>
                 <th>Bug title</th>
-                <th>Label / Tags</th>
+                <th >Label / Tags</th>
 <!--                <th>Actions</th>-->
             </tr>
         </thead>
