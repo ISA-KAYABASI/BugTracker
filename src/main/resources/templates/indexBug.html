@@ -34,14 +34,17 @@
             <tr>
                 <th>Bug title</th>
                 <th >Label / Tags</th>
+                <th >Priority</th>
 <!--                <th>Actions</th>-->
             </tr>
         </thead>
         <tbody>
             <tr th:each="bug:${listBugs}">
 
-                <td ><a th:href="@{/showFormForDetails/{id}(id=${bug.id})}"  th:text="${bug.title}">Details</a></td>
+                <td ><a th:href="@{/showFormForDetails/{id}(id=${bug.id})}" th:text="${bug.title}">Details</a></td>
                 <td th:text="${bug.labelName}"></td>
+                <td style="background-color: darkorange" th:text="${bug.priority}"></td>
+
 
             </tr>
         </tbody>

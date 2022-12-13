@@ -12,10 +12,10 @@ public class MainController {
     @Autowired
     private BugService bugService;
 
-    @GetMapping("/login")
+    @GetMapping("/index")
     public String login(){
 
-        return "login";
+        return "index";
     }
 
     @GetMapping("/")
