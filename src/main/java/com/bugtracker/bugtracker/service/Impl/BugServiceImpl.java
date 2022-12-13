@@ -50,6 +50,7 @@ public class BugServiceImpl implements BugService {
         bug.setDescription(bug.getDescription().substring(0,1).toUpperCase()+(bug.getDescription().substring(1,descriptionLength).toLowerCase()));
 
 
+
 //        Label newDep = departmentRepository.save(bug.getLabelName())
         this.bugRepository.save(bug);
     }

@@ -12,7 +12,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Builder
@@ -34,11 +36,9 @@ public class Bug {
     @Column(name ="description" )
     private String description;
 
-    @Column(name = "salary")
-    private String salary;
 
-//    @Column(name = "birthday")
-//    @Past(message = "Date should be int he past")
+    @Column(name = "priorities")
+    private String priority;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "dd/MM/yyyy")

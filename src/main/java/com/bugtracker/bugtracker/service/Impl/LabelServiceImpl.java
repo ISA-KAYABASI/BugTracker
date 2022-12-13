@@ -1,7 +1,5 @@
 package com.bugtracker.bugtracker.service.Impl;
 
-
-
 import com.bugtracker.bugtracker.model.Label;
 import com.bugtracker.bugtracker.repository.LabelRepository;
 import com.bugtracker.bugtracker.service.LabelService;
@@ -11,14 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class LabelServiceImpl implements LabelService {
 
     @Autowired
     private LabelRepository labelRepository;
-    @Autowired
-    private BugRepository bugRepository;
 
 
     @Override
@@ -37,11 +32,10 @@ public class LabelServiceImpl implements LabelService {
             throw new ArithmeticException("Same label already exists: " + label.getLabelName());
         }else
         {
+
         return labelRepository.save(label);
         }
     }
-
-
 
     @Override
     public Label updateLabel(Label label) {

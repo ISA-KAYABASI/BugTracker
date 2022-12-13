@@ -22,33 +22,30 @@
 <!-- Importing Navbar	-->
 <div th:insert="navbar.html :: navbar"></div>
 
-
-
-
 <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
 
     <hr>
 
     <div th:if="${param.error}">
-        <div class="alert alert-danger">You can not use same label name</div>
+        <div class="alert alert-danger">You can not use same priority name</div>
     </div>
 
     <div th:if="${param.success}">
-        <div class="alert alert-info">You are successfully save new label ! </div>
+        <div class="alert alert-info">You are successfully save new priority ! </div>
     </div>
-    <h2>Creating a new label</h2>
-    <form action="#" th:action="@{/saveLabel}" th:object ="${label}" method="POST">
+    <h2>Creating a new priority</h2>
+    <form action="#" th:action="@{/savePriority}" th:object ="${priority}" method="POST">
 
 
         <p>
-            <input type="text" th:field ="*{labelName}" placeholder="Label Name" class="form-control mb-4 col-4">
-            <span th:if="${#fields.hasErrors('labelName')}" th:errorclass="error" th:errors="*{labelName}"></span>
+            <input type="text" th:field ="*{priority}" placeholder="Priority" class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('priority')}" th:errorclass="error" th:errors="*{priority}"></span>
         </p>
 
 
-        <button type="submit" class="btn btn-outline-info col-2"> Save Label</button>
+        <button type="submit" class="btn btn-outline-info col-2"> Save Priority</button>
         <button type="reset" class="btn btn-outline-warning col-2"> Reset</button>
-        <a th:href = "@{/LabelList}" class="btn btn-outline-danger col-2">Return</a>
+        <a th:href = "@{/PriorityList}" class="btn btn-outline-danger col-2">Return</a>
 
     </form>
 

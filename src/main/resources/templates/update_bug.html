@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-  <title>Bug managment System</title>
+  <title>Bug Tracker</title>
 
 
   <style>
@@ -51,9 +51,9 @@
       <span th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
     </p>
 
-    <p> Salary
-      <input type="text" th:field ="*{salary}"  class="form-control mb-4 col-4">
-      <span th:if="${#fields.hasErrors('salary')}" th:errorclass="error" th:errors="*{salary}"></span>
+    <p> Priority
+      <input type="text" th:field ="*{priority}"  class="form-control mb-4 col-4">
+      <span th:if="${#fields.hasErrors('priority')}" th:errorclass="error" th:errors="*{priority}"></span>
     </p>
 
     <p> Deadline

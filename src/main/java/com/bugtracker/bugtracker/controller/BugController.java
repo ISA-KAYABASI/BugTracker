@@ -3,8 +3,11 @@ package com.bugtracker.bugtracker.controller;
 
 import com.bugtracker.bugtracker.model.Bug;
 import com.bugtracker.bugtracker.model.Label;
+import com.bugtracker.bugtracker.model.Priority;
+import com.bugtracker.bugtracker.repository.PriorityRepository;
 import com.bugtracker.bugtracker.service.LabelService;
 import com.bugtracker.bugtracker.service.BugService;
+import com.bugtracker.bugtracker.service.PriorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -24,6 +28,10 @@ public class BugController {
 
     @Autowired
     private LabelService labelService;
+
+    @Autowired
+    private PriorityService priorityService;
+
 
 
 
@@ -63,11 +71,18 @@ public class BugController {
 
     @GetMapping("/shownewBugForm")
     public String shownewBugForm(Model model){
+
         //create model attribute to bind form data
         Bug bug = new Bug();
         List<Label> listLabel2 = labelService.getAllLabel();
         model.addAttribute("listLabel2", listLabel2);
+
+        List<Priority> priorityList = priorityService.getAllPriority();
+        model.addAttribute("listPriority2", priorityList);
+
         model.addAttribute("bug", bug);
+
+
         return "new_bug";
     }
 
@@ -77,6 +92,9 @@ public class BugController {
 
         List<Label> listLAbel2 = labelService.getAllLabel();
         model.addAttribute("listLabel2", listLAbel2);
+
+        List<Priority> priorityList = priorityService.getAllPriority();
+        model.addAttribute("listPriority2", priorityList);
 
         if (bindingResult.hasErrors()){
 

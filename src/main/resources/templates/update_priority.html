@@ -30,29 +30,29 @@
   <hr>
 
   <div th:if="${param.error}">
-    <div class="alert alert-danger">Same label already exist</div>
+    <div class="alert alert-danger">Same priority already exist</div>
   </div>
 
   <div th:if="${param.success}">
-    <div class="alert alert-info">You are successfully updated the label ! </div>
+    <div class="alert alert-info">You are successfully updated the priority ! </div>
   </div>
 
-  <h2>Update Label</h2>
-  <form action="#" th:action="@{/update_label}" th:object ="${label}"
+  <h2>Update priority</h2>
+  <form action="#" th:action="@{/update_priority}" th:object ="${priority}"
         method="POST">
 
           <!--    Add hidden form field to handle update-->
     <input type="hidden" th:field="*{id}" />
 
 
-    <input type="text" th:field ="*{LabelName}"  class="form-control mb-4 col-4">
+    <input type="text" th:field ="*{priority}"  class="form-control mb-4 col-4">
 
 
 
 
 
-    <button type="submit" class="btn btn-outline-info col-2"> Update Label</button>
-    <a th:href = "@{/LabelList}" class="btn btn-outline-danger col-2">Cancel</a>
+    <button type="submit" class="btn btn-outline-info col-2"> Update priority</button>
+    <a th:href = "@{/PriorityList}" class="btn btn-outline-danger col-2">Cancel</a>
   </form>
   <hr>
 
