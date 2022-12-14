@@ -10,5 +10,4 @@ public interface LabelRepository extends JpaRepository<Label,Long> {
 
     boolean existsByLabelName(String labelName);
 
-    Label findByLabelName(String labelName);
 }

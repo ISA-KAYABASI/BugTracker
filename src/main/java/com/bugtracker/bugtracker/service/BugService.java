@@ -12,5 +12,4 @@ public interface BugService extends UserDetailsService {
     Bug getBugById(long id);
     void deleteBugById(long id);
 
-    Label getLabel(Label label);
 }

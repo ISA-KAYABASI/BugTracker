@@ -7,11 +7,6 @@ public interface PriorityService {
 
     List<Priority> getAllPriority();
 
-    Priority savePriority(Priority priority);
+//    Priority savePriority(Priority priority);
 
-    Priority updatePriority(Priority priority);
-
-    Priority getPriorityById(long id);
-
-    void deletePriorityById(long id);
 }

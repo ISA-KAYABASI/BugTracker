@@ -28,7 +28,6 @@
     <a class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/shownewBugForm}">Add Bug</a>
 
     <a th:href = "@{/LabelList}" class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')">Label / Tag List</a>
-    <a th:href = "@{/PriorityList}" class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')">Priority List</a>
     <table border="1" class = "table table-striped table-responsive-md">
         <thead>
             <tr>
@@ -43,7 +42,8 @@
 
                 <td ><a th:href="@{/showFormForDetails/{id}(id=${bug.id})}" th:text="${bug.title}">Details</a></td>
                 <td th:text="${bug.labelName}"></td>
-                <td style="background-color: darkorange" th:text="${bug.priority}"></td>
+                <td style="background-color: darkorange; border-radius: 25px;  "
+                    th:text="${bug.priority}"></td>
 
 
             </tr>

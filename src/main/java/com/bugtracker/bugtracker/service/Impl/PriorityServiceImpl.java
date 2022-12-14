@@ -19,43 +19,17 @@ public class PriorityServiceImpl implements PriorityService {
         return priorityRepository.findAll();
     }
 
-    @Override
-    public Priority savePriority(Priority priority) throws ArithmeticException  {
-
-
-        if (priorityRepository.existsByPriority(priority.getPriority())){
-            throw new ArithmeticException("Same priority already exists: " + priority.getPriority());
-        }else
-        {
-            return priorityRepository.save(priority);
-        }
-    }
-
-    @Override
-    public Priority updatePriority(Priority priority) {
-        if (priorityRepository.existsByPriority(priority.getPriority())){
-            throw new ArithmeticException("Same label already exists: " + priority.getPriority());
-        }else
-        {
-            return priorityRepository.save(priority);
-        }
-    }
-
-    @Override
-    public Priority getPriorityById(long id) {
-        Optional<Priority> optional = priorityRepository.findById(id);
-        Priority priority = null;
-        if(optional.isPresent()){
-            priority = optional.get();
-        }else {
-            throw new RuntimeException("Priority not found for id :: " + id);
-        }
-        return priority;
-    }
-    @Override
-    public void deletePriorityById(long id) {
-        this.priorityRepository.deleteById(id);
-    }
+//    @Override
+//    public Priority savePriority(Priority priority) throws ArithmeticException  {
+//
+//
+//        if (priorityRepository.existsByPriority(priority.getPriority())){
+//            throw new ArithmeticException("Same priority already exists: " + priority.getPriority());
+//        }else
+//        {
+//            return priorityRepository.save(priority);
+//        }
+//    }
 
 
 }

@@ -91,12 +91,12 @@ public class BugServiceImpl implements BugService {
         this.bugRepository.deleteById(id);
     }
 
-    @Override
-    public Label getLabel(Label label) {
-
-        labelRepository.findByLabelName(label.getLabelName());
-        return label;
-    }
+//    @Override
+//    public Label getLabel(Label label) {
+//
+//        labelRepository.findByLabelName(label.getLabelName());
+//        return label;
+//    }
 
 
 

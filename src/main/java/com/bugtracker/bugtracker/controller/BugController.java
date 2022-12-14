@@ -118,6 +118,9 @@ public class BugController {
         model.addAttribute("bug", bug);
         List<Label> listLabel2 = labelService.getAllLabel();
         model.addAttribute("listLabel2", listLabel2);
+
+        List<Priority> priorityList = priorityService.getAllPriority();
+        model.addAttribute("listPriority2", priorityList);
         return "update_bug";
     }
 
@@ -126,6 +129,9 @@ public class BugController {
     public String updateBug(@Valid  @ModelAttribute("bug") Bug bug, BindingResult bindingResult, Model model){
         List<Label> listLabel2 = labelService.getAllLabel();
         model.addAttribute("listLabel2", listLabel2);
+
+        List<Priority> priorityList = priorityService.getAllPriority();
+        model.addAttribute("listPriority2", priorityList);
 
         if (bindingResult.hasErrors()){
 

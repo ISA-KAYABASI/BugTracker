@@ -9,5 +9,4 @@ public interface PriorityRepository extends JpaRepository<Priority,Long> {
 
     boolean existsByPriority(String priority);
 
-    Priority findByPriority(String priority);
 }

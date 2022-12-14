@@ -51,9 +51,14 @@
       <span th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
     </p>
 
-    <p> Priority
-      <input type="text" th:field ="*{priority}"  class="form-control mb-4 col-4">
-      <span th:if="${#fields.hasErrors('priority')}" th:errorclass="error" th:errors="*{priority}"></span>
+    <p>
+      Priority
+      <br>
+      <select  name="priority">
+        <option th:size="large" th:each="priority : ${listPriority2}"
+                th:text="${priority.priority}"
+        />
+      </select>
     </p>
 
     <p> Deadline
