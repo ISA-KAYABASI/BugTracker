@@ -57,16 +57,19 @@ public class BugController {
     }
 
 
+
     @PostMapping("/showFormForDetails/{id}")
-    public String updateBugStatus(@Valid @PathVariable (value = "id") long id, Model model){
+    public String updateBugIsActive(@Valid @PathVariable (value = "id") long id, Model model){
 
         //get bug from the service
         Bug bug = bugService.getBugById(id);
         bug.setActive(!bug.isActive());
         bugService.saveBug(bug);
         model.addAttribute("bugDetails", bug);
+
         return "bug_details";
     }
+
 
 
     @GetMapping("/shownewBugForm")

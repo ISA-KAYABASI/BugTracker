@@ -7,6 +7,5 @@ public interface PriorityService {
 
     List<Priority> getAllPriority();
 
-//    Priority savePriority(Priority priority);
 
 }

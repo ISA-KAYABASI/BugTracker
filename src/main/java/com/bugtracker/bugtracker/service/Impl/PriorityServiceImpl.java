@@ -19,17 +19,5 @@ public class PriorityServiceImpl implements PriorityService {
         return priorityRepository.findAll();
     }
 
-//    @Override
-//    public Priority savePriority(Priority priority) throws ArithmeticException  {
-//
-//
-//        if (priorityRepository.existsByPriority(priority.getPriority())){
-//            throw new ArithmeticException("Same priority already exists: " + priority.getPriority());
-//        }else
-//        {
-//            return priorityRepository.save(priority);
-//        }
-//    }
-
 
 }
