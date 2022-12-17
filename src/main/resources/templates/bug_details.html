@@ -24,9 +24,10 @@
         <th>Title </th>
         <th>Description </th>
         <th>Priority</th>
+        <th>Status </th>
         <th>Deadline </th>
         <th>Label / Tag </th>
-        <th>Status </th>
+
 
         <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
       </tr>
@@ -37,7 +38,7 @@
         <td style="width: 10%;" th:text="${bugDetails.title}"></td>
         <td style="width: 10%;" th:text="${bugDetails.description}"></td>
         <td style="width: 10%;" th:text="${bugDetails.priority}"></td>
-
+        <td style="width: 10%;" th:text="${bugDetails.status}"></td>
         <td style="width: 10%;" th:text="${#dates.format(bugDetails.deadLine,'dd/MM/yyyy')}"></td>
         <td style="width: 10%;" th:text="${bugDetails.labelName}"></td>
 

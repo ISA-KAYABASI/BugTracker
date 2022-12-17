@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface StatusService {
 
-    List<Status> getallStatus();
+    List<Status> getAllStatus();
 
 }

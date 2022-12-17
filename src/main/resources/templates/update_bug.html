@@ -60,7 +60,19 @@
         />
       </select>
     </p>
+<!--    //////////////////////////////-->
 
+    <p>
+      Priority
+      <br>
+      <select  name="status">
+        <option th:size="large" th:each="status : ${statusList2}"
+                th:text="${status.status}"
+        />
+      </select>
+    </p>
+
+<!--/////////////////////////////-->
     <p> Deadline
       <input type="date" th:field ="*{deadLine}"  class="form-control mb-4 col-4">
       <span th:if="${#fields.hasErrors('deadLine')}" th:errorclass="error" th:errors="*{deadLine}"></span>

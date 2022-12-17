@@ -43,7 +43,7 @@ public class BugTrackerApplication implements CommandLineRunner {
 
         Status status1 = statusRepository.save(new Status(1,"Open"));
         Status status3 = statusRepository.save(new Status(2,"In Progress"));
-        Status status4 = statusRepository.save(new Status(3,"Waiting for test process"));
+        Status status4 = statusRepository.save(new Status(3,"Test process"));
         Status status5 = statusRepository.save(new Status(4,"Tested"));
         Status status2 = statusRepository.save(new Status(5,"Solved"));
         Status status6 = statusRepository.save(new Status(6,"Deployed"));

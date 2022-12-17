@@ -4,11 +4,11 @@ package com.bugtracker.bugtracker.controller;
 import com.bugtracker.bugtracker.model.Bug;
 import com.bugtracker.bugtracker.model.Label;
 import com.bugtracker.bugtracker.model.Priority;
-import com.bugtracker.bugtracker.repository.PriorityRepository;
+import com.bugtracker.bugtracker.model.Status;
 import com.bugtracker.bugtracker.service.LabelService;
 import com.bugtracker.bugtracker.service.BugService;
 import com.bugtracker.bugtracker.service.PriorityService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bugtracker.bugtracker.service.StatusService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,22 +17,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
 public class BugController {
 
-    @Autowired
-    private BugService bugService;
 
-    @Autowired
-    private LabelService labelService;
+    private final BugService bugService;
+    private final LabelService labelService;
+    private final PriorityService priorityService;
+    private final StatusService statusService;
 
-    @Autowired
-    private PriorityService priorityService;
-
-
+    public BugController(BugService bugService, LabelService labelService, PriorityService priorityService, StatusService statusService) {
+        this.bugService = bugService;
+        this.labelService = labelService;
+        this.priorityService = priorityService;
+        this.statusService = statusService;
+    }
 
 
     //display list of employees
@@ -49,7 +50,6 @@ public class BugController {
 
         //get bug from the service
         Bug bug = bugService.getBugById(id);
-
 
         //set bug as a model attribute to pre-populate the form
         model.addAttribute("bugDetails", bug);
@@ -124,6 +124,9 @@ public class BugController {
 
         List<Priority> priorityList = priorityService.getAllPriority();
         model.addAttribute("listPriority2", priorityList);
+
+        List<Status> statusList = statusService.getAllStatus();
+        model.addAttribute("statusList2", statusList);
         return "update_bug";
     }
 
@@ -135,6 +138,9 @@ public class BugController {
 
         List<Priority> priorityList = priorityService.getAllPriority();
         model.addAttribute("listPriority2", priorityList);
+
+        List<Status> statusList = statusService.getAllStatus();
+        model.addAttribute("statusList2", statusList);
 
         if (bindingResult.hasErrors()){
 
