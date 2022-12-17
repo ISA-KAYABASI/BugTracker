@@ -28,6 +28,34 @@
     <a class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/shownewBugForm}">Add Bug</a>
 
     <a th:href = "@{/LabelList}" class="btn btn-primary btn-lg mb-3" sec:authorize="hasRole('ROLE_ADMIN')">Label / Tag List</a>
+
+
+
+<!--    <div class="container text-center">-->
+<!--        <div class="row">-->
+<!--            <div class="col" style="background-color: blueviolet">-->
+<!--                Open-->
+<!--            </div>-->
+<!--            <div class="col"style="background-color: cadetblue">-->
+<!--                In Progress-->
+<!--            </div>-->
+<!--            <div class="col" style="background-color: salmon">-->
+<!--                Test process-->
+<!--            </div>-->
+<!--            <div class="col" style="background-color: dodgerblue">-->
+<!--                Tested-->
+<!--            </div>-->
+<!--            <div class="col"style="background-color: darkblue">-->
+<!--                Solved-->
+<!--            </div>-->
+<!--            <div class="col" style="background-color: forestgreen">-->
+<!--                Deployed-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
     <hr>
     <div class="cardTable" style="display: inline-block;">
         <div th:each="bug:${listBugs}" class="card text-bg-success mb-3"

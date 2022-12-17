@@ -26,7 +26,7 @@
 				<ul class="navbar-nav navbar-right ms-auto" sec:authorize="isAuthenticated()">
 					<li class="nav-item" >
 						<a class="nav-link" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_READER')"
-						   th:href="@{/index}" > Logout <i class="fa fa-sign-out" aria-hidden="true"></i> </a></li>
+						   th:href="@{/index}" style="font-size: 25px" > Logout <i class="fa fa-sign-out" aria-hidden="true"></i> </a></li>
 				</ul>
 			</div>
 
